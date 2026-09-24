@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Staff &amp; Roles</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Admin Panel</h1>
+  <div style="display:flex; align-items:center; gap:16px;">
+    <span class="who" id="who-am-i"></span>
+    <button class="logout-btn" id="logout-btn">Log Out</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Staff &amp; Roles</h2>
+      <button class="btn-add" id="add-staff-btn">+ Add Staff</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Last Login</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="staff-table-body">
+        <!-- rows injected by dashboard.js -->
+      </tbody>
+    </table>
+
+    <div class="empty-state" id="empty-state" style="display:none;">
+      No staff accounts yet. Click "+ Add Staff" to create one.
+    </div>
+  </div>
+
+</div>
+
+<!-- Add / Edit Staff Modal -->
+<div class="modal-overlay" id="staff-modal-overlay">
+  <div class="modal">
+    <h3 id="staff-modal-title">Add Staff</h3>
+    <form id="staff-form">
+      <input type="hidden" id="staff-id">
+
+      <label for="staff-name">Full Name</label>
+      <input type="text" id="staff-name" required>
+
+      <label for="staff-email">Email</label>
+      <input type="email" id="staff-email" required>
+
+      <label for="staff-password">Password</label>
+      <input type="text" id="staff-password" placeholder="Leave blank to keep current password" autocomplete="new-password">
+
+      <label for="staff-role">Role</label>
+      <select id="staff-role">
+        <option value="staff">Staff</option>
+        <option value="manager">Manager</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <label for="staff-status">Status</label>
+      <select id="staff-status">
+        <option value="active">Active</option>
+        <option value="disabled">Disabled</option>
+      </select>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" id="staff-modal-cancel">Cancel</button>
+        <button type="submit" class="btn-save">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/dashboard.js"></script>
+</body>
+
+   <script src="chatbot-widget.js"></script>
+</html>
